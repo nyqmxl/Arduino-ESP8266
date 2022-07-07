@@ -36,7 +36,7 @@
 | 2    | DFRobot_EnvironmentalSensor-master | 1.0.1   |
 | 3    | DFRobot_RTU-master                 | 1.0.1   |
 
-**二次开发说明**：仅需要修改`驱动.hpp`文件和`API.hpp`文件即可。
+**二次开发说明**：仅需要修改`驱动.hpp`文件和`API.hpp`文件即可，默认I2C通信。
 
 
 
