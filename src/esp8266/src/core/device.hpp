@@ -72,7 +72,7 @@ ICACHE_FLASH_ATTR auto SEN0500()
   doc[F("环境数据")][F("华氏温度")] = environment.getTemperature(TEMP_F);
   doc[F("环境数据")][F("湿度数值")] = environment.getHumidity();
   doc[F("环境数据")][F("光照强度")] = environment.getLuminousIntensity();
-  doc[F("紫外线强度")] = environment.getUltravioletIntensity();
+  doc[F("环境数据")][F("紫外线强度")] = environment.getUltravioletIntensity();
   String message;
   serializeJson(doc, message);
   doc.clear();
