@@ -85,9 +85,9 @@ ICACHE_FLASH_ATTR void WebSocketEvent(uint8_t num, WStype_t type, unsigned char*
     case WStype_DISCONNECTED:
       {
         DynamicJsonDocument doc(1024);
-        doc[F("在线")] = false;
-        doc[F("用户")] = num;
-        doc[F("消息")] = F("客户端断开");
+        doc[F("消息服务")][F("在线")] = false;
+        doc[F("消息服务")][F("用户")] = num;
+        doc[F("消息服务")][F("消息")] = F("客户端断开");
         ip.clear();
         serializeJson(doc, ip);
         webSocket.broadcastTXT(ip);
@@ -99,11 +99,11 @@ ICACHE_FLASH_ATTR void WebSocketEvent(uint8_t num, WStype_t type, unsigned char*
         DynamicJsonDocument doc(1024);
         if (ws_ip_search(ip))
         {
-          doc[F("认证")] = true;
-          doc[F("在线")] = true;
-          doc[F("地址")] = ip;
-          doc[F("用户")] = num;
-          doc[F("消息")] = F("帮助文档请键入“帮助文档”获取。聊天请键入文字。（最多可以输入：") + String(uint16_t(ESP.getFreeHeap() / 32)) + "个字的消息）";
+          doc[F("消息服务")][F("认证")] = true;
+          doc[F("消息服务")][F("在线")] = true;
+          doc[F("消息服务")][F("地址")] = ip;
+          doc[F("消息服务")][F("用户")] = num;
+          doc[F("消息服务")][F("消息")] = F("帮助文档请键入“帮助文档”获取。聊天请键入文字。（最多可以输入：") + String(uint16_t(ESP.getFreeHeap() / 32)) + "个字的消息）";
           ip.clear();
           serializeJson(doc, ip);
           doc.clear();
@@ -111,9 +111,9 @@ ICACHE_FLASH_ATTR void WebSocketEvent(uint8_t num, WStype_t type, unsigned char*
         }
         else
         {
-          doc[F("认证")] = false;
-          doc[F("地址")] = ip;
-          doc[F("用户")] = num;
+          doc[F("消息服务")][F("认证")] = false;
+          doc[F("消息服务")][F("地址")] = ip;
+          doc[F("消息服务")][F("用户")] = num;
           ip.clear();
           serializeJson(doc, ip);
           doc.clear();
