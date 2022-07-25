@@ -65,29 +65,29 @@ ICACHE_FLASH_ATTR auto NetConnect()
 ICACHE_FLASH_ATTR auto NetMsg()
 {
   DynamicJsonDocument doc(1024);
-  doc[F("网络信息")][F("状态")] = WiFi.status();
-  doc[F("网络信息")][F("主机")] = WiFi.hostname();
-  doc[F("网络信息")][F("名称")] = WiFi.SSID();
-  doc[F("网络信息")][F("密码")] = WiFi.psk();
-  doc[F("网络信息")][F("信号")] = WiFi.RSSI();
-  doc[F("网络信息")][F("信道")] = WiFi.channel();
-  doc[F("网络信息")][F("本地")] = WiFi.macAddress();
-  doc[F("网络信息")][F("路由")] = WiFi.BSSIDstr();
+  doc[F("无线信息")][F("状态")] = WiFi.status();
+  doc[F("无线信息")][F("主机")] = WiFi.hostname();
+  doc[F("无线信息")][F("名称")] = WiFi.SSID();
+  doc[F("无线信息")][F("密码")] = WiFi.psk();
+  doc[F("无线信息")][F("信号")] = WiFi.RSSI();
+  doc[F("无线信息")][F("信道")] = WiFi.channel();
+  doc[F("无线信息")][F("本地")] = WiFi.macAddress();
+  doc[F("无线信息")][F("路由")] = WiFi.BSSIDstr();
   for (auto a : addrList)
   {
     if (a.isV6())
-      doc[F("网络信息")][F("IPv6")].add(a.toString());
+      doc[F("无线信息")][F("IPv6")].add(a.toString());
     else
     {
-      doc[F("网络信息")][F("IPv4")][0] = a.toString();
-      doc[F("网络信息")][F("IPv4")][1] = a.netmask();
-      doc[F("网络信息")][F("IPv4")][2] = a.gw();
+      doc[F("无线信息")][F("IPv4")][0] = a.toString();
+      doc[F("无线信息")][F("IPv4")][1] = a.netmask();
+      doc[F("无线信息")][F("IPv4")][2] = a.gw();
     }
   }
   for (byte f1 = 0; f1 < DNS_MAX_SERVERS; f1++)
   {
     IPAddress dns = WiFi.dnsIP(f1);
-    if (dns.isSet()) doc[F("网络信息")][F("DNS")].add(dns);
+    if (dns.isSet()) doc[F("无线信息")][F("DNS")].add(dns);
   }
   String message;
   serializeJson(doc, message);
