@@ -65,7 +65,7 @@ ICACHE_FLASH_ATTR auto SEN0500()
 {
   DFRobot_EnvironmentalSensor environment(/*addr = */SEN050X_DEFAULT_DEVICE_ADDRESS, /*pWire = */&Wire);
   DynamicJsonDocument doc(1024);
-  doc[F("环境数据")][F("状态")] = !environment.begin();
+  doc[F("环境数据")][F("连接状态")] = !environment.begin();
   doc[F("环境数据")][F("气压强度")] = environment.getAtmospherePressure(HPA);
   doc[F("环境数据")][F("海拔高度")] = environment.getElevation();
   doc[F("环境数据")][F("摄氏温度")] = environment.getTemperature(TEMP_C);
