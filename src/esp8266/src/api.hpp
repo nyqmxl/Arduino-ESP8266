@@ -59,13 +59,13 @@ ICACHE_FLASH_ATTR auto ApiInit()
 ICACHE_FLASH_ATTR auto ApiHelp()
 {
   DynamicJsonDocument doc(1024);
-  doc[F("文档")] = F("此文件可以帮助机器自我学习，固定格式。");
-  doc[F("语法")][0] = F("系统重启");
-  doc[F("语法")][1] = F("系统信息");
-  doc[F("语法")][2] = F("无线配网");
-  doc[F("语法")][3] = F("无线扫描");
-  doc[F("语法")][4] = F("无线信息");
-  doc[F("语法")][5] = F("环境数据");
+  doc[F("帮助文档")][F("文档")] = F("此文件可以帮助机器自我学习，固定格式。");
+  doc[F("帮助文档")][F("语法")][0] = F("系统重启");
+  doc[F("帮助文档")][F("语法")][1] = F("系统信息");
+  doc[F("帮助文档")][F("语法")][2] = F("无线配网");
+  doc[F("帮助文档")][F("语法")][3] = F("无线扫描");
+  doc[F("帮助文档")][F("语法")][4] = F("无线信息");
+  doc[F("帮助文档")][F("语法")][5] = F("环境数据");
   String message;
   serializeJson(doc, message);
   doc.clear();
