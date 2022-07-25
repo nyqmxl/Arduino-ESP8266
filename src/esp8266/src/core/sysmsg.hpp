@@ -34,20 +34,20 @@ ICACHE_FLASH_ATTR auto SysReboot()
 ICACHE_FLASH_ATTR auto SysMsg()
 {
   DynamicJsonDocument doc(1024);
-  doc[F("开发人员")] = F("萌小狸宝宝");
-  doc[F("编译版本")] = F("22.05.17");
-  doc[F("编译时间")] = F("2022年5月17日");
-  doc[F("使用场景")] = F("环境检测传感器（i2c）");
-  doc[F("固件版本")] = ESP.getFullVersion();
-  doc[F("CPU频率")] = ESP.getCpuFreqMHz();
-  doc[F("CPU序列号")] = ESP.getChipId();
-  doc[F("闪存序列号")] = ESP.getFlashChipId();
-  doc[F("闪存大小")] = ESP.getFlashChipRealSize();
-  doc[F("固件大小")] = ESP.getSketchSize();
-  doc[F("固件MD5")] = ESP.getSketchMD5();
-  doc[F("重置信息")] = ESP.getResetReason();
-  // doc["重置信息"] = ESP.getResetInfo();
-  doc[F("可用堆")] = ESP.getFreeHeap();
+  doc[F("系统信息")][F("开发人员")] = F("萌小狸宝宝");
+  doc[F("系统信息")][F("编译版本")] = F("22.05.17");
+  doc[F("系统信息")][F("编译时间")] = F("2022年5月17日");
+  doc[F("系统信息")][F("使用场景")] = F("环境传感器（i2c）");
+  doc[F("系统信息")][F("固件版本")] = ESP.getFullVersion();
+  doc[F("系统信息")][F("CPU频率")] = ESP.getCpuFreqMHz();
+  doc[F("系统信息")][F("CPU序列号")] = ESP.getChipId();
+  doc[F("系统信息")][F("闪存序列号")] = ESP.getFlashChipId();
+  doc[F("系统信息")][F("闪存大小")] = ESP.getFlashChipRealSize();
+  doc[F("系统信息")][F("固件大小")] = ESP.getSketchSize();
+  doc[F("系统信息")][F("固件MD5")] = ESP.getSketchMD5();
+  doc[F("系统信息")][F("重置信息")] = ESP.getResetReason();
+  // doc[F("系统信息")]["重置信息"] = ESP.getResetInfo();
+  doc[F("系统信息")][F("可用堆")] = ESP.getFreeHeap();
   String message;
   serializeJson(doc, message);
   doc.clear();
