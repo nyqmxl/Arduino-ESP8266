@@ -107,28 +107,28 @@ ICACHE_FLASH_ATTR auto NetScanning()
   switch (data_scan)
   {
     case -2:
-      doc[String(data_scan)] = F("启动扫描");
+      doc[F("无线扫描")][String(data_scan)] = F("启动扫描");
       WiFi.scanNetworks(/*async=*/true, /*hidden=*/true);
       break;
     case -1:
-      doc[String(data_scan)] = F("正在扫描");
+      doc[F("无线扫描")][String(data_scan)] = F("正在扫描");
       break;
     default:
       for (int8_t f1 = 0; f1 < data_scan; f1++)
       {
-        doc[String(data_scan)][f1][F("名称")] = WiFi.SSID(f1);
-        doc[String(data_scan)][f1][F("地址")] = WiFi.BSSIDstr(f1);
-        doc[String(data_scan)][f1][F("信号")] = WiFi.RSSI(f1);
-        doc[String(data_scan)][f1][F("信道")] = WiFi.channel(f1);
+        doc[F("无线扫描")][String(data_scan)][f1][F("名称")] = WiFi.SSID(f1);
+        doc[F("无线扫描")][String(data_scan)][f1][F("地址")] = WiFi.BSSIDstr(f1);
+        doc[F("无线扫描")][String(data_scan)][f1][F("信号")] = WiFi.RSSI(f1);
+        doc[F("无线扫描")][String(data_scan)][f1][F("信道")] = WiFi.channel(f1);
         switch (WiFi.encryptionType(f1))
         {
-          case 2: doc[String(data_scan)][f1][F("加密")] = "TKIP(WPA/PSK)"; break; //TKIP WPA PSK
-          case 4: doc[String(data_scan)][f1][F("加密")] = "CCMP(WPA2/PSK)"; break;//CCMP WPA2 PSK
-          case 5: doc[String(data_scan)][f1][F("加密")] = "WEP"; break;
-          case 7: doc[String(data_scan)][f1][F("加密")] = "NONE"; break;
-          case 8: doc[String(data_scan)][f1][F("加密")] = "AUTO"; break;
+          case 2: doc[F("无线扫描")][String(data_scan)][f1][F("加密")] = "TKIP(WPA/PSK)"; break; //TKIP WPA PSK
+          case 4: doc[F("无线扫描")][String(data_scan)][f1][F("加密")] = "CCMP(WPA2/PSK)"; break;//CCMP WPA2 PSK
+          case 5: doc[F("无线扫描")][String(data_scan)][f1][F("加密")] = "WEP"; break;
+          case 7: doc[F("无线扫描")][String(data_scan)][f1][F("加密")] = "NONE"; break;
+          case 8: doc[F("无线扫描")][String(data_scan)][f1][F("加密")] = "AUTO"; break;
         }
-        doc[String(data_scan)][f1][F("隐藏")] = WiFi.isHidden(f1);
+        doc[F("无线扫描")][String(data_scan)][f1][F("隐藏")] = WiFi.isHidden(f1);
       }
       WiFi.scanDelete();
       break;
