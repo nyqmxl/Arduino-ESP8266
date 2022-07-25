@@ -65,19 +65,19 @@ ICACHE_FLASH_ATTR auto SEN0500()
 {
   DFRobot_EnvironmentalSensor environment(/*addr = */SEN050X_DEFAULT_DEVICE_ADDRESS, /*pWire = */&Wire);
   DynamicJsonDocument doc(1024);
-  doc[F("状态")] = !environment.begin();
-  doc[F("气压强度")] = environment.getAtmospherePressure(HPA);
-  doc[F("海拔高度")] = environment.getElevation();
-  doc[F("摄氏温度")] = environment.getTemperature(TEMP_C);
-  doc[F("华氏温度")] = environment.getTemperature(TEMP_F);
-  doc[F("湿度数值")] = environment.getHumidity();
-  doc[F("光照强度")] = environment.getLuminousIntensity();
+  doc[F("环境数据")][F("状态")] = !environment.begin();
+  doc[F("环境数据")][F("气压强度")] = environment.getAtmospherePressure(HPA);
+  doc[F("环境数据")][F("海拔高度")] = environment.getElevation();
+  doc[F("环境数据")][F("摄氏温度")] = environment.getTemperature(TEMP_C);
+  doc[F("环境数据")][F("华氏温度")] = environment.getTemperature(TEMP_F);
+  doc[F("环境数据")][F("湿度数值")] = environment.getHumidity();
+  doc[F("环境数据")][F("光照强度")] = environment.getLuminousIntensity();
   doc[F("紫外线强度")] = environment.getUltravioletIntensity();
   String message;
   serializeJson(doc, message);
   doc.clear();
 #ifdef FILE_HPP
-  return FileWrite(F("/config/sen0500.json"), message);
+  return FileWrite(F("/config/sen0501.json"), message);
 #else
   return message;
 #endif
