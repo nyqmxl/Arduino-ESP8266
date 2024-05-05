@@ -73,10 +73,8 @@
 
 
 
-**由[梦云之家](http://mengyuns.com)开发和维护**
+**由[梦云之家](http://mengyunos.com)开发和维护**
 
 
-企鹅群：594467493
 
-
-欢迎各位提出建议或测试BUG。
+欢迎各位提出建议或测试BUG，提交给Admin@mengyunos.com。
